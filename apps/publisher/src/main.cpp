@@ -1,18 +1,34 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+#include "PowerMeter/PowerMeter.h"
+
+PowerMeter powerMeter1(0);
+PowerMeter powerMeter2(1);
+
+uint32_t last_print_milis = 0;
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(9600);
+
+  analogReadResolution(14);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
+  powerMeter1.collect();
+  powerMeter2.collect();
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  if (millis() - last_print_milis > 1000) {
+    last_print_milis = millis();
+    Serial.print("PowerMeter1: ");
+    Serial.print(powerMeter1.getPowerStatus());
+    Serial.print("/");
+    Serial.print(powerMeter1.getAnalogValue());
+    Serial.println();
+    Serial.print(" PowerMeter2: ");
+    Serial.print(powerMeter2.getPowerStatus());
+    Serial.print("/");
+    Serial.print(powerMeter2.getAnalogValue());
+    Serial.println();
+  }
+  // put your main code here, to run repeatedly:
 }
