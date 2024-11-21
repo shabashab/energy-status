@@ -1,7 +1,7 @@
 #pragma once
 
-#define WIFI_SSID "ssid"
-#define WIFI_PASSWORD "password"
+#define WIFI_SSID "test"
+#define WIFI_PASSWORD "testtest"
 
 #define POWER_METER_1_PIN 0
 #define POWER_METER_2_PIN 1

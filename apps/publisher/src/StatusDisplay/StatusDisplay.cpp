@@ -7,7 +7,7 @@ void StatusDisplay::begin() {
   Serial.println(begin_status);
 }
 
-void StatusDisplay::print(EnergyStatus& status) {
+void StatusDisplay::print(EnergyStatus& status, NetworkUpdatePublisher& networkUpdatePublisher) {
   display.clearDisplay();
   display.setTextSize(1);
   display.setTextColor(SSD1306_WHITE);
@@ -26,6 +26,9 @@ void StatusDisplay::print(EnergyStatus& status) {
 
   display.print("Power 2: ");
   display.println(status.getPower2() ? "ON" : "OFF");
+
+  display.print("Currenet network: ");
+  display.println(networkUpdatePublisher.getProvider());
 
   display.display();
 }

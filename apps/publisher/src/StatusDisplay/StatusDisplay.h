@@ -4,6 +4,7 @@
 
 #include "config.h"
 #include "EnergyStatus/EnergyStatus.h"
+#include "NetworkUpdatePublisher/NetworkUpdatePublisher.h"
 
 // Default logo
 static const unsigned char PROGMEM logo_bmp[] = { 0b00000000, 0b11000000,
@@ -28,5 +29,5 @@ private:
   Adafruit_SSD1306 display = Adafruit_SSD1306(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 public:
   void begin();
-  void print(EnergyStatus& status);
+  void print(EnergyStatus& status, NetworkUpdatePublisher& networkUpdatePublisher);
 };

@@ -1,0 +1,7 @@
+#pragma once
+
+enum NetworkProvider {
+  NETWORK_PROVIDER_GSM,
+  NETWORK_PROVIDER_WIFI,
+  NETWORK_PROVIDER_NONE
+};
