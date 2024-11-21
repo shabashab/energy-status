@@ -19,3 +19,9 @@ int PowerMeter::getAnalogValue() {
 bool PowerMeter::getPowerStatus() {
   return avg.getAvg() < POWER_EXISTS_ACTIVATION_THRESHOLD;
 }
+
+void PowerMeter::debugPrint(Stream& serial) {
+  serial.print(this->getPowerStatus());
+  serial.print(" / ");
+  serial.print(this->getAnalogValue());
+}

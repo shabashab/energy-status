@@ -13,4 +13,6 @@ public:
   void collect();
   int getAnalogValue();
   bool getPowerStatus();
+
+  void debugPrint(Stream &stream); 
 };

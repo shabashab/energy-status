@@ -1,9 +1,8 @@
 #include <Arduino.h>
 
-#include "PowerMeter/PowerMeter.h"
+#include "EnergyStatus/EnergyStatus.h"
 
-PowerMeter powerMeter1(0);
-PowerMeter powerMeter2(1);
+EnergyStatus energyStatus;
 
 uint32_t last_print_milis = 0;
 
@@ -14,21 +13,11 @@ void setup() {
 }
 
 void loop() {
-  powerMeter1.collect();
-  powerMeter2.collect();
+  energyStatus.collect();
 
   if (millis() - last_print_milis > 1000) {
     last_print_milis = millis();
-    Serial.print("PowerMeter1: ");
-    Serial.print(powerMeter1.getPowerStatus());
-    Serial.print("/");
-    Serial.print(powerMeter1.getAnalogValue());
-    Serial.println();
-    Serial.print(" PowerMeter2: ");
-    Serial.print(powerMeter2.getPowerStatus());
-    Serial.print("/");
-    Serial.print(powerMeter2.getAnalogValue());
-    Serial.println();
+
+    energyStatus.debugPrint(Serial);
   }
-  // put your main code here, to run repeatedly:
 }
