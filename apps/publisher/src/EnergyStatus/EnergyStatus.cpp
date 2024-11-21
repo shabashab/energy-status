@@ -36,3 +36,11 @@ bool EnergyStatus::getPower1() {
 bool EnergyStatus::getPower2() {
   return this->powerMeter2.getPowerStatus();
 }
+
+float EnergyStatus::getTemperature() {
+  return this->environmentMeter.getTemperature();
+}
+
+float EnergyStatus::getHumidity() {
+  return this->environmentMeter.getHumidity();
+}

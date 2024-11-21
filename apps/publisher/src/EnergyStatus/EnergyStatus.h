@@ -1,10 +1,9 @@
 #pragma once
 
+#include "config.h"
+
 #include "PowerMeter/PowerMeter.h"
 #include "EnvironmentMeter/EnvironmentMeter.h"
-
-#define POWER_METER_1_PIN 0
-#define POWER_METER_2_PIN 1
 
 class EnergyStatus {
 private:
@@ -19,6 +18,8 @@ public:
 
   bool getPower1();
   bool getPower2();
+  float getTemperature();
+  float getHumidity();
 
   void debugPrint(Stream &stream);
 };
