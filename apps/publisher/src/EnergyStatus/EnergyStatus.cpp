@@ -2,9 +2,14 @@
 
 EnergyStatus::EnergyStatus() {}
 
+void EnergyStatus::begin() {
+  this->environmentMeter.begin();
+}
+
 void EnergyStatus::collect() {
   this->powerMeter1.collect();
   this->powerMeter2.collect();
+  this->environmentMeter.collect();
 }
 
 void EnergyStatus::debugPrint(Stream& stream) {
@@ -15,6 +20,11 @@ void EnergyStatus::debugPrint(Stream& stream) {
 
   stream.print("Power meter 2: ");
   this->powerMeter2.debugPrint(stream);
+
+  stream.println();
+
+  stream.print("Environment: ");
+  this->environmentMeter.debugPrint(stream);
 
   stream.println();
 }

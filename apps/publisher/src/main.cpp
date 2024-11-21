@@ -8,6 +8,9 @@ uint32_t last_print_milis = 0;
 
 void setup() {
   Serial.begin(9600);
+  Wire.begin();
+
+  energyStatus.begin();
 
   analogReadResolution(14);
 }
