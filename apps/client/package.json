@@ -7,9 +7,12 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "start": "yarn drizzle-kit migrate && node .output/server/index.mjs"
   },
   "dependencies": {
+    "@vueuse/core": "^11.3.0",
+    "dotenv": "^16.4.5",
     "drizzle-kit": "^0.28.1",
     "drizzle-orm": "^0.36.4",
     "nuxt": "^3.14.1592",
@@ -20,6 +23,7 @@
   "packageManager": "yarn@4.2.2",
   "devDependencies": {
     "@flydotio/dockerfile": "^0.5.9",
+    "@nuxtjs/tailwindcss": "^6.12.2",
     "@types/pg": "^8"
   }
 }

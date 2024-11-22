@@ -7,7 +7,10 @@ export default defineEventHandler(async (event) => {
     orderBy: desc(updates.createdAt)
   })
 
+  const updatesCount = await db.$count(updates)
+
   return {
-    lastUpdate: lastUpdate ?? null
+    lastUpdate: lastUpdate ?? null,
+    updatesCount
   }
 })
