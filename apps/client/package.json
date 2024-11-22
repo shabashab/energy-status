@@ -1,0 +1,25 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "drizzle-kit": "^0.28.1",
+    "drizzle-orm": "^0.36.4",
+    "nuxt": "^3.14.1592",
+    "pg": "^8.13.1",
+    "vue": "latest",
+    "vue-router": "latest"
+  },
+  "packageManager": "yarn@4.2.2",
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.5.9",
+    "@types/pg": "^8"
+  }
+}
