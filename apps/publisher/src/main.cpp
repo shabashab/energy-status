@@ -16,6 +16,7 @@ uint32_t last_send_milis = 0;
 
 void setup() {
   Serial.begin(9600);
+  Serial1.begin(9600);
   Wire.begin();
 
   energyStatus.begin();

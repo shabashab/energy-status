@@ -2,22 +2,14 @@
 
 void NetworkUpdatePublisher::begin() {
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-  gsm_serial.begin(9600);
+
   gsm_client.init();
-  // gsm_client.setPhoneFunc(1);
-
-
-  Serial.print("Set Phone Function... ");
-  Serial.println(gsm_client.setPhoneFunc(1));
-  //delay(1000);
 
   Serial.print("is Module Registered to Network?... ");
   Serial.println(gsm_client.isRegistered());
-  //delay(1000);
 
   Serial.print("Signal Quality... ");
   Serial.println(gsm_client.signalQuality());
-  //delay(1000);
 
   Serial.print("Operator Name... ");
   Serial.println(gsm_client.operatorNameFromSim());
@@ -29,6 +21,10 @@ String NetworkUpdatePublisher::createBody(EnergyStatus& energyStatus) {
   body += energyStatus.getTemperature();
   body += ";humidity:";
   body += energyStatus.getHumidity();
+  body += ";power1:";
+  body += energyStatus.getPower1();
+  body += ";power2:";
+  body += energyStatus.getPower2();
 
   return body;
 }
@@ -71,7 +67,8 @@ bool NetworkUpdatePublisher::publish(EnergyStatus& energyStatus) {
     wifi_client.print(WIFI_PATH);
     wifi_client.println(" HTTP/1.1");
     wifi_client.println("Connection: close");
-    wifi_client.println("Host: webhoook.site");
+    wifi_client.print("Host: ");
+    wifi_client.println(WIFI_HOST);
     wifi_client.print("Content-Length: ");
     wifi_client.print(body.length());
     wifi_client.println();
@@ -99,7 +96,11 @@ NetworkProvider NetworkUpdatePublisher::getProvider() {
     return NETWORK_PROVIDER_WIFI;
   }
 
-  if (gsm_client.isRegistered()) {
+  bool isRegistered = gsm_client.isRegistered();
+  Serial.print("is Module Registered to Network?... ");
+  Serial.println(isRegistered);
+
+  if (isRegistered) {
     return NETWORK_PROVIDER_GSM;
   }
 

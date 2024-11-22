@@ -11,8 +11,7 @@
 class NetworkUpdatePublisher {
 private:
   WiFiClient wifi_client;
-  SoftwareSerial gsm_serial = SoftwareSerial(GSM_RX_PIN, GSM_TX_PIN);
-  GSMSimHTTP gsm_client = GSMSimHTTP(gsm_serial);
+  GSMSimHTTP gsm_client = GSMSimHTTP(Serial1);
 
   bool sending = false;
   bool last_gsm_connected = false;
