@@ -5,8 +5,6 @@
 #define WIFI_HOST "energy-status-client.fly.dev"
 #define WIFI_PATH "/api/receive"
 
-#define GSM_RX_PIN 11
-#define GSM_TX_PIN 10
 #define GSM_URL "energy-status-client.fly.dev/api/receive"
 
 #define POWER_METER_1_PIN 0
